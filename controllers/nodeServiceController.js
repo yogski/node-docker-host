@@ -44,9 +44,7 @@ const createNodeService = async (req, res) => {
 
     const jsonCommand = {
       command: "START",
-      db_id: nodeService.dataValues.id,
-      name_alias: nodeService.dataValues.name_alias,
-      port: nodeService.dataValues.port,
+      service: nodeService.dataValues,
     }
     publishMessage(process.env.REDIS_CHANNEL, jsonCommand)
 

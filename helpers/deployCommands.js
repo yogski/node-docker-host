@@ -2,19 +2,21 @@
  * expected config
  * {
  *   command: "START", "STATUS", "RESTART", "KILL"
- *   name_alias: name for service
- *   port: port for mapping 
- *   db_id: database identifier
+ *   service: {id, github_url, entrypoint, port, project_name, name_alias}
  * }
- * 
- *  
  */
 
-// const simpleGit = require('simple-git');
+const { cloneRepository, dockerizeExpress } = require('./execCommands');
 
 const startNewService = async (config) => {
   console.log("running startNewService");
   console.log(config);
+  await cloneRepository(config.service.github_url);
+  await dockerizeExpress(
+    config.service.project_name,
+    config.service.entrypoint,
+    config.service.port
+  );
   return true;
 };
 
