@@ -1,6 +1,13 @@
 # Node Docker Host
 
 A `node.js` service that picks other `node.js` repository from Github and runs it as Docker container on your your machine.
+Included in the pack:
+- Database: PostgreSQL
+- ORM: sequelize
+- Migration: sequelize-cli
+- Validation: joi
+- Asynchronous pub/sub: Redis
+- HTTP Request: axios
 
 ## Prerequisite
 
@@ -21,6 +28,7 @@ A `node.js` service that picks other `node.js` repository from Github and runs i
   - REDIS_URL: URL connection to redis. No need to change if you use `npm run redis-docker`
   - REDIS_CHANNEL: name of redis pub/sub channel
   - NODE_VERSION: recommended to use node version on your machine
+- Migrate DB: Run `npx sequelize-cli db:migrate`
 - Run `npm start`
 
 ## Features & Limitations
